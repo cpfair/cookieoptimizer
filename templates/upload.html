@@ -1,0 +1,22 @@
+{% extends "template.html" %}
+{% block body %}
+<script type="text/javascript" src="static/dropzone.js"></script>
+{% if shape_images %}
+<h2>Recognized Cookie Cutters</h2>
+
+{% for shape_image in shape_images %}
+<img src="{{shape_image}}?{{random}}"/>
+{% endfor %}
+
+{% endif %}
+<h2>{{ title }}</h2>
+<form method="POST" action="{{ target }}" enctype="multipart/form-data" class="dropzone" id="upload">
+</form>
+<script type="text/javascript">
+Dropzone.options.upload = {
+    success: function(){
+        window.location = "/";
+    }
+};
+</script>
+{% endblock %}
